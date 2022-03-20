@@ -1,6 +1,6 @@
 export HEROKU_APP_NAME := llexical-meal-planner-api
-export PROJECT_NAME := $(notdir $(CURDIR))
 export PORT := 8000
+export PROJECT_NAME := $(subst -,_,$(notdir $(CURDIR)))
 
 .PHONY: dev-build
 dev-build: ## Create the docker image for you dev environment
@@ -26,10 +26,6 @@ dev-setup: ## Get the env vars from Heroku
 dev-ssh: ## Open a shell on the current running docker image of pass
 	docker-compose exec $(PROJECT_NAME) bash
 
-.PHONY: dev-worker-ssh
-dev-worker-ssh: ## Open a shell on the current running docker image of pass worker
-	docker-compose exec $(PROJECT_NAME)_worker bash
-
 .PHONY: dev-shell
 dev-shell: ## Creates a shell in the project container, does not connect to a running instance. Use dev-ssh for that.
 	docker-compose run --rm $(PROJECT_NAME) bash
@@ -48,20 +44,11 @@ dev-migrate: ## Run any outstanding DB migrations for the current instance of pa
 
 .PHONY: create-staging-db-dump
 create-staging-db-dump: ## Create a DB dump on staging
-	docker run --rm -it \
-		-v $$HOME/.netrc:/root/.netrc \
-		-v $$PWD:/src \
-		-w /src heroku pg:backups:capture \
-		--app $(HEROKU_APP_NAME)
+		heroku pg:backups:capture --app $(HEROKU_APP_NAME)
 
 .PHONY: download-staging-db-dump
 download-staging-db-dump: ## Get a local copy of the DB dump created by create-staging-db-dump
-	-rm ./latest.dump
-	docker run --rm -it \
-		-v $$HOME/.netrc:/root/.netrc \
-		-v $$PWD:/src \
-		-w /src heroku pg:backups:download \
-		--app $(HEROKU_APP_NAME)
+	heroku pg:backups:download --app $(HEROKU_APP_NAME)
 
 .PHONY: restore-staging-db-dump
 restore-staging-db-dump: ## Import data into the local postgress instance

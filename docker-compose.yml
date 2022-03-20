@@ -12,7 +12,7 @@ services:
     networks:
       - default
 
-  meal_planner:
+  meal_planner_api:
     container_name: ${PROJECT_NAME?'Please set the ’PROJECT_NAME’ env var before runing docker-compose'}
     build: .
     environment:
