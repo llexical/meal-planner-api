@@ -1,1 +1,1 @@
-web: gunicorn service.wsgi
+web: gunicorn meal_planner_api.wsgi
