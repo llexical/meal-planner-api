@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -e
+
+# Wait for postgres to be up before running any other commands
+until psql $DATABASE_URL -c '\q'; do
+  sleep 1
+done
+# Postgres is up YAYYY
+>&2 echo "Postgres is up"
+
+# Apply database migrations
+echo "Apply database migrations"
+python manage.py migrate
+
+# Start server
+echo "Starting server on port ${PORT}"
+python -u manage.py runserver 0.0.0.0:"${PORT}"

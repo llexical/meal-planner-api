@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    networks:
+      - default
+
+  meal_planner:
+    container_name: ${PROJECT_NAME?'Please set the ’PROJECT_NAME’ env var before runing docker-compose'}
+    build: .
+    environment:
+      - DATABASE_URL=postgres://test:test@db:5432/test
+      - TERM=xterm
+      - DEBUG=True
+      - PORT=${PORT}
+    volumes:
+      - .:/src
+      # Mount empty volume in venv & staticfiles to ignore both
+      - /src/venv/
+      - /src/staticfiles
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db

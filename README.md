@@ -2,9 +2,13 @@
 Django api for meal planner fe app
 
 ## Requirements
-- Python 3
+- Docker
+- Heroku Cli
 
 ## Setup
-- Setup venv:
-  - `python3 -m venv ./venv`
-  - `source venv/bin/activate[.fish?]`
+- Update `export HEROKU_APP_NAME := llexical-meal-planner-api` in the Makefile to your own application.
+- `make dev-setup` to pull in environment variables
+- `make dev-build` to build the container
+- `make dev-run` to run the containers
+- quickrun: `make dev-setup dev-build dev-run`
+NOTE: for help on other commands type `make help` or checkout the makefile yourself.
