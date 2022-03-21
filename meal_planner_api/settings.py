@@ -12,7 +12,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import dj_database_url
 import os
 
+from dotenv import load_dotenv
 from pathlib import Path
+
+# Loads in .env file when running locally
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -122,3 +126,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Custom settings
+BRING_API_ENDPOINT=os.getenv("BRING_API_ENDPOINT")
+BRING_API_KEY=os.getenv("BRING_API_KEY")
+BRING_API_TOKEN=os.getenv("BRING_API_TOKEN", "") # Generated from logging in.

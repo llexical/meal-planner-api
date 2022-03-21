@@ -12,6 +12,7 @@ Django = "==3.2.12"
 dj-database-url = "*"
 psycopg2 = "*"
 gunicorn = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
