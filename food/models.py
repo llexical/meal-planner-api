@@ -1,30 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 
-FOOD_CATEGORIES = (
-    ('veg','Veg'),
-    ('fruit', 'Fruit'),
-    ('fresh_herbs', 'Fresh Herbs'),
-    ('meat','Meat'),
-    ('seafood','Seafood'),
-    ('vegetarian_fresh','Vegetarian Fresh'),
-    ('ready_meal', 'Ready Meal'),
-    ('cold_meats', 'Cold Meats'),
-    ('diary', 'Dairy'),
-    ('spices_and_herbs', 'Spices & Herbs'),
-    ('dry_carbs', 'Dry Carbs'),
-    ('tinned', 'Tinned'),
-    ('alcohol', 'Alcohol'),
-    ('soft_drink', 'Soft Drinks'),
-    ('snacks', 'Snacks'),
-    ('bread', 'Bread'),
-    ('baking', 'Baking'),
-    ('eggs', 'Eggs'),
-    ('frozen', 'Frozen'),
-    ('household', 'Household'),
-    ('toiletries', 'Toiletries')
-)
-
 class FoodCategory(MPTTModel):
     name = models.CharField(max_length=50, unique=True)
     slug = models.SlugField(max_length=255)
