@@ -43,7 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'meal'
+    'mptt',
+    'food',
+    'meal',
+    'shopping_list',
 ]
 
 MIDDLEWARE = [
@@ -126,8 +129,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Custom settings
-BRING_API_ENDPOINT=os.getenv("BRING_API_ENDPOINT")
-BRING_API_KEY=os.getenv("BRING_API_KEY")
-BRING_API_TOKEN=os.getenv("BRING_API_TOKEN", "") # Generated from logging in.
