@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
             name='meal',
         ),
         migrations.DeleteModel(
-            name='Food',
+            name='Product',
         ),
         migrations.DeleteModel(
             name='ShoppingListItem',

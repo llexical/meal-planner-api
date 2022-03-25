@@ -6,17 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('food', '0003_auto_20220325_1616'),
+        ('product', '0003_auto_20220325_1616'),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='food',
+            model_name='product',
             name='imported_at',
             field=models.DateTimeField(blank=True, null=True),
         ),
         migrations.AddField(
-            model_name='foodcategory',
+            model_name='Productcategory',
             name='imported_at',
             field=models.DateTimeField(blank=True, null=True),
         ),

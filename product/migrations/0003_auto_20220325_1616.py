@@ -6,16 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('food', '0002_auto_20220322_0000'),
+        ('product', '0002_auto_20220322_0000'),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='foodcategory',
-            options={'verbose_name_plural': 'Food Categories'},
+            name='productcategory',
+            options={'verbose_name_plural': 'Product Categories'},
         ),
         migrations.AddField(
-            model_name='food',
+            model_name='product',
             name='bring_id',
             field=models.CharField(blank=True, max_length=255, null=True),
         ),

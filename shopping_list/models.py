@@ -1,7 +1,7 @@
 from django.db import models
 
 from meal.models import Meal
-from food.models import Food
+from product.models import Product
 
 class ShoppingList(models.Model):
     name = models.CharField(max_length=255)
@@ -12,8 +12,8 @@ class ShoppingList(models.Model):
         return self.name
 
 class ShoppingListItem(models.Model):
-    shopping_list = models.ForeignKey(ShoppingList, on_delete=models.CASCADE)
-    ingredient = models.ForeignKey(Food, on_delete=models.CASCADE)
+    shopping_list = models.ForeignKey(ShoppingList, on_delete=models.CASCADE, blank=True, null=True)
+    ingredient = models.ForeignKey(Product, on_delete=models.CASCADE)
     meal = models.ForeignKey(
         Meal,
         related_name="shopping_list_items",

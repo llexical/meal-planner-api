@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('food', '0001_initial'),
+        ('product', '0001_initial'),
         ('meal', '0007_auto_20220321_2334'),
     ]
 
@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
                 ('note', models.CharField(blank=True, max_length=255, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('ingredient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='food.food')),
+                ('ingredient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='product.product')),
                 ('meal', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='shopping_list_items', to='meal.meal')),
                 ('shopping_list', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='shopping_list.shoppinglist')),
             ],

@@ -7,7 +7,8 @@ class ShoppingListItemInline(admin.TabularInline):
     model = ShoppingListItem
     extra = 0
     min_num = 1
-    autocomplete_fields = ['ingredient']
+    autocomplete_fields = ('ingredient',)
+    exclude = ('shopping_list',)
 
 @admin.register(Meal)
 class MealAdmin(admin.ModelAdmin):
