@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-wa$jswcj!kjge-gc-40ojim&s048a!q(slx#_hy7u4h2ew%55f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.getenv("DEBUG", False)).lower() == "true"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['llexical-meal-planner-api.herokuapp.com', 'localhost']
 
 
 # Application definition
