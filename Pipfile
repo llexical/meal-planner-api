@@ -17,6 +17,7 @@ requests = "*"
 install = "*"
 django-mptt = "*"
 django-bulk-update-or-create = "*"
+whitenoise = "*"
 
 [dev-packages]
 
