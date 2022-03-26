@@ -1,5 +1,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from bulk_update_or_create import BulkUpdateOrCreateQuerySet
 
 class ProductCategory(MPTTModel):
     name = models.CharField(max_length=50, unique=True)
@@ -24,6 +25,8 @@ class ProductCategory(MPTTModel):
         return self.name
 
 class Product(models.Model):
+    objects = BulkUpdateOrCreateQuerySet.as_manager()
+    
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
     bring_id = models.CharField(max_length=255, blank=True, null=True)

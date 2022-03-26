@@ -16,6 +16,7 @@ python-dotenv = "*"
 requests = "*"
 install = "*"
 django-mptt = "*"
+django-bulk-update-or-create = "*"
 
 [dev-packages]
 
