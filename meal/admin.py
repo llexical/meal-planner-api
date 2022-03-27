@@ -1,10 +1,9 @@
 from django.contrib import admin
 
-from .models import Meal
-from shopping_list.models import ShoppingListItem
+from .models import Meal, MealItem
 
-class ShoppingListItemInline(admin.TabularInline):
-    model = ShoppingListItem
+class MealItemInline(admin.TabularInline):
+    model = MealItem
     extra = 0
     min_num = 1
     autocomplete_fields = ('ingredient',)
@@ -15,5 +14,5 @@ class MealAdmin(admin.ModelAdmin):
     list_display = ("id", "date", "name", "created_at", "updated_at")
     search_fields = ("date", "name")
     inlines = [
-        ShoppingListItemInline
+        MealItemInline
     ]
