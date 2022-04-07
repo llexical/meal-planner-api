@@ -8,7 +8,7 @@ services:
       - POSTGRES_PASSWORD=test
       - POSTGRES_DB=test
     volumes:
-      - ./database:/var/lib/postgresql/data
+      - llexical_mealplanner_db:/var/lib/postgresql/data
     networks:
       - default
 
@@ -29,3 +29,5 @@ services:
       - ${PORT}:${PORT}
     depends_on:
       - db
+volumes:
+    llexical_mealplanner_db:
